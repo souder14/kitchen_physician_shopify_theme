@@ -1,0 +1,21 @@
+<header class="kp-header">
+  <div class="kp-container" style="padding: 1.25rem 0 0.75rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap;">
+    <a href="{{ routes.root_url }}" style="display:flex; align-items:center; gap:0.75rem;">
+      <div style="width:40px; height:40px; border-radius:999px; background: radial-gradient(circle at 30% 10%, #F5F5DC 0, #4CBB17 40%, #4B0082 100%); box-shadow:0 10px 25px rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">🌿</div>
+      <div>
+        <div style="font-weight:800; letter-spacing:0.08em; text-transform:uppercase; font-size:0.76rem; color:#4B0082;">THE KITCHEN PHYSICIAN</div>
+        <div style="font-size:0.78rem; color:#5b5b5b;">Herbal Farm’acy · Ward 8, DC</div>
+      </div>
+    </a>
+    <nav style="display:flex; align-items:center; gap:1.25rem; font-size:0.9rem;">
+      <a href="{{ routes.root_url }}">Home</a>
+      <a href="/pages/about">About</a>
+      <a href="/collections/all">Shop</a>
+      <a href="/pages/cafe">Café</a>
+      <a href="/pages/services">Services</a>
+      <a href="/pages/classes">Classes</a>
+      <a href="/pages/contact">Contact</a>
+      <a href="{{ routes.cart_url }}" class="kp-btn kp-btn-ghost" style="padding:0.55rem 1.1rem; font-size:0.85rem;">Cart ({{ cart.item_count }})</a>
+    </nav>
+  </div>
+</header>

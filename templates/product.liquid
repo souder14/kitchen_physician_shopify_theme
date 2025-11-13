@@ -1,0 +1,35 @@
+<div class="kp-container kp-section">
+  <div class="kp-grid-2">
+    <div>
+      {% if product.featured_image %}
+        <div style="border-radius:1.5rem; overflow:hidden; box-shadow:var(--kp-shadow-soft); background:#fff;">
+          <img src="{{ product.featured_image | img_url: '800x' }}" alt="{{ product.title | escape }}">
+        </div>
+      {% endif %}
+    </div>
+    <div>
+      <div class="kp-badge"><span class="kp-badge-dot"></span><span>Herbal Remedy</span></div>
+      <h1 class="kp-h1">{{ product.title }}</h1>
+      <p style="font-size:1.1rem; font-weight:600; margin:0.2rem 0 0.8rem;">{{ product.price | money }}</p>
+      <div class="kp-body-lg">
+        {{ product.description }}
+      </div>
+      <form method="post" action="/cart/add" style="margin-top:1.25rem; display:grid; gap:0.75rem;">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        {% if product.variants.size > 1 %}
+          <label style="font-size:0.85rem; font-weight:600; color:#444;">Choose an option</label>
+        {% endif %}
+        <select name="id" class="kp-input" {% if product.variants.size == 1 %}style="display:none"{% endif %}>
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>
+              {{ variant.title }} — {{ variant.price | money }}
+            </option>
+          {% endfor %}
+        </select>
+        <button type="submit" class="kp-btn kp-btn-primary" {% unless product.available %}disabled style="opacity:0.5; cursor:not-allowed;"{% endunless %}>
+          {% if product.available %}Add to cart{% else %}Sold out{% endif %}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

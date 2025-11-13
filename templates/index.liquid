@@ -1,0 +1,147 @@
+<div class="kp-container kp-hero">
+  <div class="kp-hero-card">
+    <div class="kp-hero-badge">
+      <span class="kp-hero-badge-dot"></span>
+      <span>Ward 8 · Washington, DC</span>
+    </div>
+    <div class="kp-grid-2">
+      <div>
+        <div class="kp-pill">Your Favorite Herbal Farm’acy</div>
+        <h1 class="kp-h1">Natural remedies, nourishing food, and community wellness.</h1>
+        <p class="kp-body-lg">
+          The Kitchen Physician is Washington, DC’s only herbal “Farm’acy” —
+          handcrafted teas, tinctures, salves, juices, and café dishes rooted in
+          nature and made with love for our community.
+        </p>
+        <div class="kp-chip-row">
+          <div class="kp-chip">Handmade herbal products</div>
+          <div class="kp-chip">Cold-pressed juices &amp; smoothies</div>
+          <div class="kp-chip">Herbal consultations · $60</div>
+          <div class="kp-chip">Classes &amp; workshops</div>
+        </div>
+        <div class="kp-hero-cta-row">
+          <a href="/collections/all" class="kp-btn kp-btn-primary">Shop Herbal Remedies</a>
+          <a href="/pages/cafe" class="kp-btn kp-btn-ghost">Visit The Café</a>
+          <span class="kp-hero-note">Fruit shall serve as food and leaves shall serve as medicine.</span>
+        </div>
+      </div>
+      <div>
+        <div class="kp-card">
+          <div class="kp-eyebrow">This week at the Farm’acy</div>
+          <h2 class="kp-h2">Wellness from the inside out.</h2>
+          <ul class="kp-list">
+            <li>Small-batch herbal teas, tinctures, and salves crafted with premium ingredients.</li>
+            <li>The Well Rounded Café: juices, smoothies, salads, nourishing sandwiches.</li>
+            <li>Herbal wellness consultations to support your unique health goals.</li>
+            <li>Prayer &amp; spiritual support available for those who wish.</li>
+          </ul>
+          <div class="kp-pill-list">
+            <span>Teas &amp; Tinctures</span>
+            <span>Salves &amp; Bundles</span>
+            <span>Massage (coming soon)</span>
+            <span>Classes &amp; Workshops</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="kp-section">
+  <div class="kp-container">
+    <div class="kp-section-header">
+      <div>
+        <div class="kp-badge"><span class="kp-badge-dot"></span><span>Shop Remedies</span></div>
+        <h2 class="kp-h2">Herbal products for everyday wellness.</h2>
+      </div>
+      <p>Explore our small-batch teas, tinctures, salves, and seasonal wellness bundles. Every product is crafted to support the mind, body, and spirit.</p>
+    </div>
+    {% if collections['frontpage'].products_count > 0 %}
+      <div class="kp-grid-3">
+        {% for product in collections['frontpage'].products limit: 6 %}
+          <article class="kp-card">
+            <a href="{{ product.url | within: collections['frontpage'] }}">
+              {% if product.featured_image %}
+                <div style="border-radius: 1rem; overflow:hidden; margin-bottom:0.85rem;">
+                  <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title | escape }}">
+                </div>
+              {% endif %}
+              <h3 style="font-size:1.02rem; margin:0 0 0.35rem;">{{ product.title }}</h3>
+              <p style="margin:0 0 0.5rem; font-size:0.9rem; color:#555;">{{ product.description | strip_html | truncate: 80 }}</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; font-size:0.92rem;">
+                <span style="font-weight:600;">{{ product.price | money }}</span>
+                <span style="font-size:0.78rem; color:#4B0082;">View details →</span>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+      <div style="text-align:center; margin-top:1.75rem;">
+        <a href="/collections/all" class="kp-btn kp-btn-ghost">Browse all products</a>
+      </div>
+    {% else %}
+      <div class="kp-card">
+        <p>No products on the homepage yet. Add items to the “Featured” collection to showcase them here.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="kp-section">
+  <div class="kp-container kp-grid-2">
+    <div class="kp-card">
+      <div class="kp-badge-soft">The Well Rounded Café</div>
+      <h2 class="kp-h2">Nourishing food that loves you back.</h2>
+      <p class="kp-body-lg">
+        Fuel your day with cold-pressed juices, vibrant smoothies, crisp salads, and hearty sandwiches.
+        Every recipe is designed to heal, energize, and nourish from within.
+      </p>
+      <ul class="kp-list">
+        <li>Fresh juices &amp; smoothies made to order.</li>
+        <li>Seasonal salads and plant-forward plates.</li>
+        <li>Grab-and-go options for busy days.</li>
+      </ul>
+      <a href="/pages/cafe" class="kp-btn kp-btn-primary" style="margin-top:1rem;">See café menu</a>
+    </div>
+    <div class="kp-card">
+      <div class="kp-badge-soft">Services &amp; Classes</div>
+      <h2 class="kp-h2">Support for your whole self.</h2>
+      <p class="kp-body-lg">
+        Go deeper with one-on-one care and community learning experiences.
+      </p>
+      <ul class="kp-list">
+        <li>Herbal wellness consultation (USD $60) with personalized guidance.</li>
+        <li>Massage therapy coming soon to help you rest and restore.</li>
+        <li>Prayer &amp; spiritual support for those who wish.</li>
+        <li>Classes &amp; workshops on herbalism, nutrition, and community wellness.</li>
+      </ul>
+      <div style="display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:0.85rem;">
+        <a href="/pages/services" class="kp-btn kp-btn-ghost">View services</a>
+        <a href="/pages/classes" class="kp-btn kp-btn-ghost">Upcoming classes</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kp-section">
+  <div class="kp-container kp-card">
+    <div class="kp-grid-2">
+      <div>
+        <div class="kp-tagline-block">
+          <div class="kp-tagline-icon">✨</div>
+          <div>“Fruit shall serve as food and leaves shall serve as medicine.”</div>
+        </div>
+        <p style="margin-top:0.9rem; font-size:0.95rem; color:#464646;">
+          Rooted in Ward 8 and serving the entire city and beyond, The Kitchen Physician is more than a business —
+          it’s a movement to make natural remedies and nutrient-rich foods accessible for everyone.
+        </p>
+      </div>
+      <div class="kp-contact-meta">
+        <strong>Visit &amp; connect</strong>
+        <p style="margin:0 0 0.3rem;">📍 Ward 8, Washington, DC</p>
+        <p style="margin:0 0 0.3rem;">📧 info@thekitchenphysician.com</p>
+        <p style="margin:0;">📱 @TheKitchenPhysician</p>
+      </div>
+    </div>
+  </div>
+</section>

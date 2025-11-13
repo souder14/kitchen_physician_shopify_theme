@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Theme settings",
+    "settings": [
+      {
+        "type": "color",
+        "id": "primary_kelly_green",
+        "label": "Primary Kelly Green",
+        "default": "#4CBB17"
+      },
+      {
+        "type": "color",
+        "id": "deep_purple",
+        "label": "Deep Purple",
+        "default": "#4B0082"
+      },
+      {
+        "type": "color",
+        "id": "sage_green",
+        "label": "Sage Green",
+        "default": "#9CAF88"
+      },
+      {
+        "type": "color",
+        "id": "beige",
+        "label": "Beige",
+        "default": "#F5F5DC"
+      },
+      {
+        "type": "color",
+        "id": "brown",
+        "label": "Brown",
+        "default": "#8B4513"
+      }
+    ]
+  }
+]

@@ -1,0 +1,48 @@
+<div class="kp-container kp-section">
+  <div class="kp-grid-2">
+    <div>
+      <div class="kp-badge"><span class="kp-badge-dot"></span><span>Contact</span></div>
+      <h1 class="kp-h1">Let’s stay in touch.</h1>
+      <p class="kp-body-lg">
+        Have a question, special request, or just want to say hello?
+        Reach out using the form and we’ll respond as soon as we can.
+      </p>
+      <div class="kp-contact-meta" style="margin-top:1.2rem;">
+        <strong>Visit &amp; connect</strong>
+        <p style="margin:0 0 0.3rem;">📍 Ward 8, Washington, DC</p>
+        <p style="margin:0 0 0.3rem;">📧 info@thekitchenphysician.com</p>
+        <p style="margin:0 0 0.3rem;">📱 @TheKitchenPhysician</p>
+        <p style="margin:0; font-size:0.85rem; color:#555;">Map embed can be added here via Shopify theme settings or app.</p>
+      </div>
+    </div>
+    <div class="kp-card">
+      <h2 class="kp-h2">Send a message</h2>
+      {% form 'contact' %}
+        {% if form.posted_successfully? %}
+          <p style="color:#4CBB17; font-weight:600;">Thank you for reaching out — we’ll be in touch soon.</p>
+        {% endif %}
+        {% if form.errors %}
+          <p style="color:#b00020; font-weight:600;">Please check the form and try again.</p>
+        {% endif %}
+        <div style="display:grid; gap:0.75rem;">
+          <input class="kp-input" type="text" name="contact[name]" placeholder="Your name" value="{{ form.name }}">
+          <input class="kp-input" type="email" name="contact[email]" placeholder="Email address" value="{{ form.email }}">
+          <input class="kp-input" type="tel" name="contact[phone]" placeholder="Phone (optional)" value="{{ form.phone }}">
+          <textarea class="kp-input" name="contact[body]" rows="4" placeholder="How can we support your wellness today?">{{ form.body }}</textarea>
+          <button type="submit" class="kp-btn kp-btn-primary">Send message</button>
+        </div>
+      {% endform %}
+      <hr style="margin:1.5rem 0; border:none; border-top:1px solid rgba(0,0,0,0.06);" />
+      <h3 style="margin:0 0 0.45rem; font-size:1.05rem;">Newsletter</h3>
+      <p style="margin:0 0 0.6rem; font-size:0.9rem;">Join our list for herbal tips, café news, and workshop invites.</p>
+      <form method="post" action="/contact#newsletter" accept-charset="UTF-8">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="kp-form-row">
+          <input class="kp-input" type="email" name="contact[email]" placeholder="Your email address" required>
+          <button class="kp-btn kp-btn-ghost" type="submit">Join</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

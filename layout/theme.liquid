@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ page_title }} - The Kitchen Physician</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="The Kitchen Physician — Washington, DC’s herbal Farm’acy for natural remedies, nourishing food, and community wellness.">
+  {{ content_for_header }}
+  <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+  <style>
+    :root {
+      --kp-kelly-green: #4CBB17;
+      --kp-deep-purple: #4B0082;
+      --kp-sage: #9CAF88;
+      --kp-beige: #F5F5DC;
+      --kp-brown: #8B4513;
+      --kp-radius-lg: 1.25rem;
+      --kp-shadow-soft: 0 18px 40px rgba(0,0,0,0.08);
+    }
+  </style>
+</head>
+<body class="kp-body">
+  {% section 'header' %}
+  <main role="main" class="kp-main">
+    {{ content_for_layout }}
+  </main>
+  {% section 'footer' %}
+  {{ 'theme.js' | asset_url | script_tag }}
+</body>
+</html>
