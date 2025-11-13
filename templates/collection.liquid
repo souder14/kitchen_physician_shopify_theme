@@ -1,38 +1,50 @@
-<div class="kp-container kp-section">
-  <div class="kp-section-header">
-    <div>
-      <div class="kp-badge"><span class="kp-badge-dot"></span><span>{{ collection.title }}</span></div>
-      <h1 class="kp-h1" style="font-size:2.1rem;">{{ collection.title }}</h1>
+<section class="section">
+  <div class="container">
+    <!-- Collection Header -->
+    <div class="section-header">
+      <span class="badge badge-success badge-dot">{{ collection.title }}</span>
+      <h1 class="section-title">{{ collection.title }}</h1>
+      {% if collection.description != blank %}
+        <p class="section-subtitle">{{ collection.description }}</p>
+      {% else %}
+        <p class="section-subtitle">Browse our selection of herbal teas, tinctures, salves, and bundles crafted with care.</p>
+      {% endif %}
     </div>
-    {% if collection.description != blank %}
-      <p>{{ collection.description }}</p>
+
+    {% if collection.products_count > 0 %}
+      <!-- Product Grid -->
+      <div class="grid grid-cols-3 gap-8">
+        {% for product in collection.products %}
+          <article class="product-card">
+            <a href="{{ product.url | within: collection }}" style="text-decoration: none; color: inherit;">
+              {% if product.featured_image %}
+                <img
+                  src="{{ product.featured_image | img_url: '600x' }}"
+                  alt="{{ product.title | escape }}"
+                  class="product-image">
+              {% else %}
+                <div class="product-image" style="display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                  🌿
+                </div>
+              {% endif %}
+              <div class="product-content">
+                <h3 class="product-title">{{ product.title }}</h3>
+                <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: var(--space-4); line-height: 1.6;">
+                  {{ product.description | strip_html | truncate: 80 }}
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="product-price">{{ product.price | money }}</span>
+                  <span style="font-size: 0.875rem; color: var(--primary); font-weight: 600;">View Details →</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
     {% else %}
-      <p>Browse our selection of herbal teas, tinctures, salves, and bundles crafted with care.</p>
+      <div class="card text-center">
+        <p style="margin: 0; color: var(--text-muted);">No products found in this collection yet.</p>
+      </div>
     {% endif %}
   </div>
-  {% if collection.products_count > 0 %}
-    <div class="kp-grid-3">
-      {% for product in collection.products %}
-        <article class="kp-card">
-          <a href="{{ product.url | within: collection }}">
-            {% if product.featured_image %}
-              <div style="border-radius:1rem; overflow:hidden; margin-bottom:0.85rem;">
-                <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title | escape }}">
-              </div>
-            {% endif %}
-            <h2 style="font-size:1.02rem; margin:0 0 0.35rem;">{{ product.title }}</h2>
-            <p style="margin:0 0 0.5rem; font-size:0.9rem; color:#555;">{{ product.description | strip_html | truncate: 80 }}</p>
-            <div style="display:flex; justify-content:space-between; align-items:center; gap:0.5rem; font-size:0.92rem;">
-              <span style="font-weight:600;">{{ product.price | money }}</span>
-              <span style="font-size:0.78rem; color:#4B0082;">View details →</span>
-            </div>
-          </a>
-        </article>
-      {% endfor %}
-    </div>
-  {% else %}
-    <div class="kp-card">
-      <p>No products found in this collection yet.</p>
-    </div>
-  {% endif %}
-</div>
+</section>

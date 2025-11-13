@@ -1,21 +1,81 @@
-<header class="kp-header">
-  <div class="kp-container" style="padding: 1.25rem 0 0.75rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap;">
-    <a href="{{ routes.root_url }}" style="display:flex; align-items:center; gap:0.75rem;">
-      <div style="width:40px; height:40px; border-radius:999px; background: radial-gradient(circle at 30% 10%, #F5F5DC 0, #4CBB17 40%, #4B0082 100%); box-shadow:0 10px 25px rgba(0,0,0,0.1); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">🌿</div>
-      <div>
-        <div style="font-weight:800; letter-spacing:0.08em; text-transform:uppercase; font-size:0.76rem; color:#4B0082;">THE KITCHEN PHYSICIAN</div>
-        <div style="font-size:0.78rem; color:#5b5b5b;">Herbal Farm’acy · Ward 8, DC</div>
-      </div>
-    </a>
-    <nav style="display:flex; align-items:center; gap:1.25rem; font-size:0.9rem;">
-      <a href="{{ routes.root_url }}">Home</a>
-      <a href="/pages/about">About</a>
-      <a href="/collections/all">Shop</a>
-      <a href="/pages/cafe">Café</a>
-      <a href="/pages/services">Services</a>
-      <a href="/pages/classes">Classes</a>
-      <a href="/pages/contact">Contact</a>
-      <a href="{{ routes.cart_url }}" class="kp-btn kp-btn-ghost" style="padding:0.55rem 1.1rem; font-size:0.85rem;">Cart ({{ cart.item_count }})</a>
-    </nav>
+<header style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm);">
+  <div class="container">
+    <div class="flex items-center justify-between" style="padding: 1.25rem 0;">
+
+      <!-- Logo -->
+      <a href="{{ routes.root_url }}" class="flex items-center" style="gap: 0.75rem; text-decoration: none;">
+        <div style="width: 48px; height: 48px; border-radius: var(--radius-lg); background: linear-gradient(135deg, var(--dark-cyan), var(--caribbean-current)); box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+          🌿
+        </div>
+        <div>
+          <div style="font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.875rem; color: var(--secondary); line-height: 1.2;">
+            THE KITCHEN PHYSICIAN
+          </div>
+          <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">
+            Herbal Farm'acy · Ward 8, DC
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="flex items-center" style="gap: 2rem;" id="desktop-nav">
+        <a href="{{ routes.root_url }}" class="nav-link" style="font-weight: 500; color: var(--text-primary); transition: color 0.2s;">Home</a>
+        <a href="/pages/about" class="nav-link" style="font-weight: 500; color: var(--text-primary); transition: color 0.2s;">About</a>
+        <a href="/collections/all" class="nav-link" style="font-weight: 500; color: var(--text-primary); transition: color 0.2s;">Shop</a>
+        <a href="/pages/cafe" class="nav-link" style="font-weight: 500; color: var(--text-primary); transition: color 0.2s;">Café</a>
+        <a href="/pages/services" class="nav-link" style="font-weight: 500; color: var(--text-primary); transition: color 0.2s;">Services</a>
+        <a href="/pages/classes" class="nav-link" style="font-weight: 500; color: var(--text-primary); transition: color 0.2s;">Classes</a>
+        <a href="/pages/contact" class="nav-link" style="font-weight: 500; color: var(--text-primary); transition: color 0.2s;">Contact</a>
+        <a href="{{ routes.cart_url }}" class="btn btn-primary btn-sm">
+          🛒 Cart ({{ cart.item_count }})
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="btn btn-ghost btn-sm" style="display: none;">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div id="mobile-nav" class="mobile-nav" style="display: none; background: white; border-top: 1px solid var(--border); padding: 1rem 0;">
+    <div class="container">
+      <nav class="flex flex-col" style="gap: 0.75rem;">
+        <a href="{{ routes.root_url }}" class="nav-link" style="padding: 0.75rem; font-weight: 500; color: var(--text-primary); border-radius: var(--radius); transition: background 0.2s;">Home</a>
+        <a href="/pages/about" class="nav-link" style="padding: 0.75rem; font-weight: 500; color: var(--text-primary); border-radius: var(--radius); transition: background 0.2s;">About</a>
+        <a href="/collections/all" class="nav-link" style="padding: 0.75rem; font-weight: 500; color: var(--text-primary); border-radius: var(--radius); transition: background 0.2s;">Shop</a>
+        <a href="/pages/cafe" class="nav-link" style="padding: 0.75rem; font-weight: 500; color: var(--text-primary); border-radius: var(--radius); transition: background 0.2s;">Café</a>
+        <a href="/pages/services" class="nav-link" style="padding: 0.75rem; font-weight: 500; color: var(--text-primary); border-radius: var(--radius); transition: background 0.2s;">Services</a>
+        <a href="/pages/classes" class="nav-link" style="padding: 0.75rem; font-weight: 500; color: var(--text-primary); border-radius: var(--radius); transition: background 0.2s;">Classes</a>
+        <a href="/pages/contact" class="nav-link" style="padding: 0.75rem; font-weight: 500; color: var(--text-primary); border-radius: var(--radius); transition: background 0.2s;">Contact</a>
+        <a href="{{ routes.cart_url }}" class="btn btn-primary w-full" style="margin-top: 0.5rem;">
+          🛒 Cart ({{ cart.item_count }})
+        </a>
+      </nav>
+    </div>
   </div>
 </header>
+
+<style>
+  .nav-link:hover {
+    color: var(--primary) !important;
+  }
+
+  #mobile-nav .nav-link:hover {
+    background: rgba(54, 143, 139, 0.05);
+  }
+
+  @media (max-width: 1024px) {
+    #desktop-nav {
+      display: none !important;
+    }
+    #mobile-menu-btn {
+      display: flex !important;
+    }
+  }
+</style>

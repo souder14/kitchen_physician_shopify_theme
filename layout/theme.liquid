@@ -4,24 +4,20 @@
   <meta charset="utf-8">
   <title>{{ page_title }} - The Kitchen Physician</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="The Kitchen Physician — Washington, DC’s herbal Farm’acy for natural remedies, nourishing food, and community wellness.">
+  <meta name="description" content="The Kitchen Physician — Washington, DC's herbal Farm'acy for natural remedies, nourishing food, and community wellness.">
   {{ content_for_header }}
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Theme CSS -->
   <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
-  <style>
-    :root {
-      --kp-kelly-green: #4CBB17;
-      --kp-deep-purple: #4B0082;
-      --kp-sage: #9CAF88;
-      --kp-beige: #F5F5DC;
-      --kp-brown: #8B4513;
-      --kp-radius-lg: 1.25rem;
-      --kp-shadow-soft: 0 18px 40px rgba(0,0,0,0.08);
-    }
-  </style>
 </head>
-<body class="kp-body">
+<body>
   {% section 'header' %}
-  <main role="main" class="kp-main">
+  <main role="main">
     {{ content_for_layout }}
   </main>
   {% section 'footer' %}
